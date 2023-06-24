@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { ServicoService } from '../servico.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,36 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  dados: any = {};
+  endereco = {
+    Nome: '',
+    Idade: '',
+  };
 
-  constructor() {}
+  LabelBotao = 'Cadastrar';
+  constructor(public nav: NavController, public servico: ServicoService) {}
 
+  ionViewDidEnter(){
+    this.LimpaDado();
+  }
+
+  salvamento() {
+    this.servico.salvarPets(this.endereco.Nome, this.endereco.Idade);
+  }
+
+  cadastrar() {
+    if (this.endereco.Nome == '' || this.endereco.Idade == '') {
+      alert('Preencher os campos');
+    } else {
+      alert(this.endereco.Nome);
+      // this.nav.navigateBack('ListasDosPets')
+    }
+  }
+
+  LimpaDado() {
+    this.LabelBotao = 'Cadastrar';
+    this.endereco.Nome='';
+    this.endereco.Idade='';
+
+  }
 }

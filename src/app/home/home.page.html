@@ -1,20 +1,36 @@
-<ion-content class="fundo" [fullscreen]="true">
+<ion-content [fullscreen]="true">
+  
   <div class="espaco">
+    <!-- <img src="../../assets/pata.img.jpg" slot="" /> -->
     <ion-item class="roundedInput" line="none">
       <ion-label position="floating">Nome do pet</ion-label>
-      <ion-input type="text"  placeholder="Ex: Bili" expand="block" style="color: #222"></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Ex: Bili"
+        expand="block"
+        style="color: #222"
+        [(ngModel)]="Nome"
+       
+      ></ion-input>
     </ion-item>
     <ion-item class="roundedInput" line="none">
       <ion-label position="floating">Idade</ion-label>
-      <ion-input type="text" placeholder="Ex: 2" expand="block" style="color: #222"></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Ex: 2"
+        expand="block"
+        style="color: #222"
+        [(ngModel)]="Idade"
+        
+      ></ion-input>
     </ion-item>
   </div>
 </ion-content>
 
 <ion-footer>
   <ion-row>
-    <ion-col class="espaco">
-      <ion-button shape="block" color="secondary">cadastrar </ion-button>
+    <ion-col class="Botaoespaco">
+      <ion-button (click)="cadastrar()" shape="block" color="secondary">cadastrar </ion-button>
     </ion-col>
   </ion-row>
 </ion-footer>
