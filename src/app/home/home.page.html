@@ -9,7 +9,7 @@
         placeholder="Ex: Bili"
         expand="block"
         style="color: #222"
-        [(ngModel)]="Nome"
+        [(ngModel)]="endereco.Nome"
        
       ></ion-input>
     </ion-item>
@@ -20,17 +20,18 @@
         placeholder="Ex: 2"
         expand="block"
         style="color: #222"
-        [(ngModel)]="Idade"
+        [(ngModel)]="endereco.Idade"
         
       ></ion-input>
     </ion-item>
   </div>
+  
 </ion-content>
 
 <ion-footer>
   <ion-row>
     <ion-col class="Botaoespaco">
-      <ion-button (click)="cadastrar()" shape="block" color="secondary">cadastrar </ion-button>
+      <ion-button (click)="cadastrar()" shape="block" color="secondary">Cadastrar</ion-button>
     </ion-col>
   </ion-row>
 </ion-footer>

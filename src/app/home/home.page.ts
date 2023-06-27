@@ -11,7 +11,8 @@ export class HomePage {
   dados: any = {};
   endereco = {
     Nome: '',
-    Idade: '',
+    Idade: ''
+    
   };
 
   LabelBotao = 'Cadastrar';
@@ -28,9 +29,13 @@ export class HomePage {
   cadastrar() {
     if (this.endereco.Nome == '' || this.endereco.Idade == '') {
       alert('Preencher os campos');
+
     } else {
-      alert(this.endereco.Nome);
+      this.salvamento();
+      
       // this.nav.navigateBack('ListasDosPets')
+    
+      
     }
   }
 

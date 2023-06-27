@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'cadastro-pet',
+    loadChildren: () => import('./cadastro-pet/cadastro-pet.module').then( m => m.CadastroPetPageModule)
   },
+
 ];
 
 @NgModule({
