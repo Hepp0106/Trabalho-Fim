@@ -33,7 +33,7 @@ export class HomePage {
     } else {
       this.salvamento();
       
-      // this.nav.navigateBack('ListasDosPets')
+      this.nav.navigateForward('cadastro-pet')
     
       
     }

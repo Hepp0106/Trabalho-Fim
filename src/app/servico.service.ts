@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,14 +13,15 @@ export class ServicoService {
   public result: any = {};
   public imagemP = '';
 
-  constructor(private http: HttpClient) {}
 
-  salvarPets(nomeP: string, idadeP: string) {
+  constructor(private http: HttpClient) { }
+
+  async salvarPets(nomeP: string, idadeP: string) {
     this.gerarImg();
     const dados = {
       nomeP: nomeP,
       idadeP: idadeP,
-      imagemP: this.imagem,
+      imagemP: await this.gerarImg(),
     };
 
     const values = localStorage.getItem(this.key);
@@ -47,18 +49,22 @@ export class ServicoService {
     localStorage.setItem(this.key, JSON.stringify(result));
   }
 
+ 
    gerarImg() {
-      this.localizaImgPet().subscribe(
-      async (resp) => {
-        this.result = resp;
-        this.imagem = await this.result.message;
-        console.log(this.imagem);
-      },
-      (erro) => {}
-    );
+    return new Promise<string>(async (resolve, reject) => {
+    try {
+      const resp = await this.localizaImgPet().toPromise()
+      this.result = resp;
+      // this.imagem = this.result.message;
+      resolve (this.result.message);
+    } catch (error) {
+      reject (error);
+    }
+    });
+   }
+
+    localizaImgPet() {
+    return this.http.get(this.url);
   }
 
-   localizaImgPet() {
-    return  this.http.get(this.url);
-  }
 }
