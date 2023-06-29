@@ -1,37 +1,28 @@
-<ion-content [fullscreen]="true">
-  
-  <div class="espaco">
-    <!-- <img src="../../assets/pata.img.jpg" slot="" /> -->
-    <ion-item class="roundedInput" line="none">
-      <ion-label position="floating">Nome do pet</ion-label>
-      <ion-input
-        type="text"
-        placeholder="Ex: Bili"
-        expand="block"
-        style="color: #222"
-        [(ngModel)]="endereco.Nome"
-       
-      ></ion-input>
-    </ion-item>
-    <ion-item class="roundedInput" line="none">
-      <ion-label position="floating">Idade</ion-label>
-      <ion-input
-        type="text"
-        placeholder="Ex: 2"
-        expand="block"
-        style="color: #222"
-        [(ngModel)]="endereco.Idade"
-        
-      ></ion-input>
-    </ion-item>
-  </div>
-  
-</ion-content>
+<ion-content class="fundo" [fullscreen]="true">
 
-<ion-footer>
-  <ion-row>
-    <ion-col class="Botaoespaco">
-      <ion-button (click)="cadastrar()" shape="block" color="secondary">Cadastrar</ion-button>
-    </ion-col>
-  </ion-row>
-</ion-footer>
+
+
+
+  <div class="espaco">
+    <div class="card">
+      <div class="inserir">
+        <ion-row>
+          <input type="text" autocomplete="off" name="text" class="input" placeholder="Nome Pet"
+            [(ngModel)]="endereco.Nome">
+        </ion-row>
+        <ion-row>
+          <input type="text" autocomplete="off" name="text" class="input" placeholder="Idade Pet"
+            [(ngModel)]="endereco.Idade">
+        </ion-row>
+      </div>
+      <ion-footer>
+        <ion-row>
+          <ion-col class="Botaoespaco">
+            <ion-button (click)="cadastrar()" shape="block" color="tertiary" s>Cadastrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-footer>
+    </div>
+
+  </div>
+</ion-content>

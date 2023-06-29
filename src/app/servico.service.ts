@@ -17,7 +17,7 @@ export class ServicoService {
   constructor(private http: HttpClient) { }
 
   async salvarPets(nomeP: string, idadeP: string) {
-    this.gerarImg();
+  
     const dados = {
       nomeP: nomeP,
       idadeP: idadeP,

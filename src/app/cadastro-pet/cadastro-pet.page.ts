@@ -27,18 +27,19 @@ export class CadastroPetPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.carregaDados();
+     this.carregaDados();
   }
 
+
   async voltar() {
+    
     const voltando = await this.alerta.create({
-       header: 'ATENÇÃO!',
-       message: 'Deseja voltar para cadastrar um novo!',
+      header: 'ATENÇÃO!',
+      message: 'Cadastre um novo!',
       buttons: [
         {
           text: 'OK',
           handler: () => {
-            
             // localStorage.clear();
 
             this.nav.navigateForward('/');
@@ -46,11 +47,13 @@ export class CadastroPetPage implements OnInit {
         },
       ],
     });
+  
     await voltando.present();
+  
   }
 
   carregaDados() {
-    if (this.servicos.listar()) {
+
       this.animais = this.servicos.listar()!;
       console.log(this.animais)
       if (this.animais.length == 0) {
@@ -58,7 +61,8 @@ export class CadastroPetPage implements OnInit {
         
       }
     }
-  }
+  
+
   deletar(nomeP: string) {
     this.servicos.deletar(nomeP);
     this.carregaDados();
