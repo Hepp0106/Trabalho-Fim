@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { ServicoService } from '../servico.service';
 
 @Component({
@@ -11,14 +11,17 @@ export class HomePage {
   dados: any = {};
   endereco = {
     Nome: '',
-    Idade: ''
-    
+    Idade: '',
   };
 
   LabelBotao = 'Cadastrar';
-  constructor(public nav: NavController, public servico: ServicoService) {}
+  constructor(
+    public mensagem: ToastController,
+    public nav: NavController,
+    public servico: ServicoService
+  ) {}
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.LimpaDado();
   }
 
@@ -28,21 +31,28 @@ export class HomePage {
 
   cadastrar() {
     if (this.endereco.Nome == '' || this.endereco.Idade == '') {
-      alert('Preencher os campos');
-
+      this.exibeToast('Preenche os campos necessáros', 'danger');
     } else {
       this.salvamento();
-      
-      this.nav.navigateForward('cadastro-pet')
-    
-      
+      this.exibeToast('Cadastrado', 'success');
+      this.nav.navigateForward('cadastro-pet');
     }
   }
 
   LimpaDado() {
     this.LabelBotao = 'Cadastrar';
-    this.endereco.Nome='';
-    this.endereco.Idade='';
+    this.endereco.Nome = '';
+    this.endereco.Idade = '';
+  }
 
+  async exibeToast(msg: string, cor: string) {
+    const toast = await this.mensagem.create({
+      message: msg,
+      duration: 2000,
+      position: 'top',
+      animated: true,
+      color: cor,
+    });
+    toast.present();
   }
 }

@@ -1,28 +1,43 @@
 <ion-content class="fundo" [fullscreen]="true">
-
-
-
+  <ion-header>
+    <ion-toolbar>
+      <ion-title style="font-size: x-large">PetShop</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
   <div class="espaco">
     <div class="card">
       <div class="inserir">
         <ion-row>
-          <input type="text" autocomplete="off" name="text" class="input" placeholder="Nome Pet"
-            [(ngModel)]="endereco.Nome">
+          <input
+            type="text"
+            autocomplete="off"
+            name="text"
+            class="input"
+            placeholder="Nome Pet"
+            [(ngModel)]="endereco.Nome"
+          />
         </ion-row>
         <ion-row>
-          <input type="text" autocomplete="off" name="text" class="input" placeholder="Idade Pet"
-            [(ngModel)]="endereco.Idade">
+          <input
+            type="text"
+            autocomplete="off"
+            name="text"
+            class="input"
+            placeholder="Idade Pet"
+            [(ngModel)]="endereco.Idade"
+          />
         </ion-row>
       </div>
       <ion-footer>
         <ion-row>
           <ion-col class="Botaoespaco">
-            <ion-button (click)="cadastrar()" shape="block" color="tertiary" s>Cadastrar</ion-button>
+            <ion-button (click)="cadastrar()" shape="block" color="tertiary" s
+              >Cadastrar</ion-button
+            >
           </ion-col>
         </ion-row>
       </ion-footer>
     </div>
-
   </div>
 </ion-content>
